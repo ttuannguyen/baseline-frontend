@@ -28,7 +28,8 @@ function App() {
 
   
   useEffect(() => {
-    axios.get('/api').then((data) => {
+    axios.get('/api')
+    .then((data) => {
       console.log(data);
     }).catch(error => {
       console.error('Error:', error);
@@ -38,7 +39,9 @@ function App() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('hitting submit')
+    axios.post('/api/search', {input})
+    .then(res => console.log(res))
+    .catch(err => console.log(err))
     setInput('');
   }
   
