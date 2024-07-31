@@ -26,14 +26,15 @@ function App() {
   //   console.error('Error fetching data from Edamam API', error);
   // });
 
-
   
-  const apiCall = () => {
-    axios.get('http://localhost:8080').then((data) => {
+  useEffect(() => {
+    axios.get('/api').then((data) => {
       console.log(data);
-    })
-  }
-  
+    }).catch(error => {
+      console.error('Error:', error);
+    });
+  }, []);
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
