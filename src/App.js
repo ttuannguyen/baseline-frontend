@@ -40,13 +40,22 @@ function App() {
     axios.post('/api/search', {keyword})
     .then(res => {
       // console.log(res)
-      setFoods(res);
+      setFoods(res.data);
     })
     .catch(err => console.log(err))
     setKeyword('');
   }
 
   console.log(foods);
+
+  const foodsToDisplay = foods.map(f => {
+    return (
+      <div>
+        <p>{f.name}</p>
+        <p>{f.calories}</p>
+      </div>
+    )
+  })
 
   return (
     <div className='App'>
@@ -57,6 +66,7 @@ function App() {
         </label>
         <input type='submit' />
       </form>
+      {foodsToDisplay}
     </div>
   );
 }
