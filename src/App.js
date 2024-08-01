@@ -5,12 +5,12 @@ import React, { useEffect, useState } from 'react'
 
 function App() {
 
-  const EDAMAM_API_ID = '805a07f7';
-  const EDAMAM_API_KEY = '48484be0535a5017a5e879330aa66712';
+  // const EDAMAM_API_ID = '';
+  // const EDAMAM_API_KEY = '';
 
-  const [input, setInput] = useState('');
-  console.log(input);
-  
+  const [keyword, setKeyword] = useState('');
+  const [foods, setFoods] = useState([]);
+
   // test get request based on a search
   // axios.get('https://api.edamam.com/search', {
   //   params: {
@@ -25,7 +25,6 @@ function App() {
   // .catch(error => {
   //   console.error('Error fetching data from Edamam API', error);
   // });
-
   
   useEffect(() => {
     axios.get('/api')
@@ -36,22 +35,25 @@ function App() {
     });
   }, []);
 
-
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post('/api/search', {input})
-    .then(res => console.log(res))
+    axios.post('/api/search', {keyword})
+    .then(res => {
+      // console.log(res)
+      setFoods(res);
+    })
     .catch(err => console.log(err))
-    setInput('');
+    setKeyword('');
   }
-  
+
+  console.log(foods);
 
   return (
     <div className='App'>
       App
       <form onSubmit={handleSubmit}>
         <label>Search:
-          <input type='text' name='input' value={input} onChange={(e) => setInput(e.target.value)}/>
+          <input type='text' name='keyword' value={keyword} onChange={(e) => setKeyword(e.target.value)}/>
         </label>
         <input type='submit' />
       </form>
