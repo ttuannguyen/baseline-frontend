@@ -8,7 +8,7 @@ function App() {
   // const EDAMAM_API_ID = '';
   // const EDAMAM_API_KEY = '';
 
-  const [keyword, setKeyword] = useState('');
+  const [keywords, setKeywords] = useState('');
   const [foods, setFoods] = useState([]);
 
   // test get request based on a search
@@ -37,13 +37,13 @@ function App() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post('/api/search', {keyword})
+    axios.post('/api/search', {keywords})
     .then(res => {
       // console.log(res)
       setFoods(res.data);
     })
     .catch(err => console.log(err))
-    setKeyword('');
+    setKeywords('');
   }
 
   console.log(foods);
@@ -53,6 +53,7 @@ function App() {
       <div>
         <p>{f.name}</p>
         <p>{f.calories}</p>
+        <img src={f.image} alt='' />
       </div>
     )
   })
@@ -62,7 +63,7 @@ function App() {
       App
       <form onSubmit={handleSubmit}>
         <label>Search:
-          <input type='text' name='keyword' value={keyword} onChange={(e) => setKeyword(e.target.value)}/>
+          <input type='text' name='keywords' value={keywords} onChange={(e) => setKeywords(e.target.value)}/>
         </label>
         <input type='submit' />
       </form>
