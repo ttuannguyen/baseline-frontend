@@ -2,6 +2,7 @@
 // import './App.css';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
+import FoodCard from './components/FoodCard';
 
 function App() {
 
@@ -46,17 +47,7 @@ function App() {
     setKeywords('');
   }
 
-  console.log(foods);
-
-  const foodsToDisplay = foods.map(f => {
-    return (
-      <div className='foodCard'>
-        <p>{f.name}</p>
-        <p>Calories: {f.calories}</p>
-        <img src={f.image} alt='' />
-      </div>
-    )
-  })
+  const foodCards = foods.map(food => <FoodCard food={food} />)
 
   return (
     <div className='App'>
@@ -68,7 +59,7 @@ function App() {
         <input type='submit' />
       </form>
       <div className='foodListContainer'>
-        {foodsToDisplay}
+        {foodCards}
       </div>
     </div>
   );
