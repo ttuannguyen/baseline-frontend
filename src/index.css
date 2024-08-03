@@ -3,3 +3,18 @@
   grid-gap: 1rem;
   grid-template-columns: repeat(3, calc(33% - 1rem));;
 }
+
+.foodCard {
+  border: 1px solid black;
+  flex-direction: column;
+  margin: 1rem;
+  padding: 1rem;
+  align-items: center;
+}
+
+.foodCard img {
+  width: 100%; 
+  height: auto;
+  object-fit: cover; 
+  max-width: 300px; 
+}

@@ -50,7 +50,7 @@ function App() {
 
   const foodsToDisplay = foods.map(f => {
     return (
-      <div>
+      <div className='foodCard'>
         <p>{f.name}</p>
         <p>Calories: {f.calories}</p>
         <img src={f.image} alt='' />
@@ -60,7 +60,7 @@ function App() {
 
   return (
     <div className='App'>
-      App
+      <h1>Foodie</h1>
       <form onSubmit={handleSubmit}>
         <label>Search:
           <input type='text' name='keywords' value={keywords} onChange={(e) => setKeywords(e.target.value)}/>
