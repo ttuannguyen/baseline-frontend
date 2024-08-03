@@ -52,7 +52,7 @@ function App() {
     return (
       <div>
         <p>{f.name}</p>
-        <p>{f.calories}</p>
+        <p>Calories: {f.calories}</p>
         <img src={f.image} alt='' />
       </div>
     )
@@ -67,7 +67,9 @@ function App() {
         </label>
         <input type='submit' />
       </form>
-      {foodsToDisplay}
+      <div className='foodListContainer'>
+        {foodsToDisplay}
+      </div>
     </div>
   );
 }
