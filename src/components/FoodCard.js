@@ -7,7 +7,7 @@ const FoodCard = ({ food }) => {
         <h3>{food.name}</h3>
         <p>Calories: {food.calories}</p>
         <img src={food.image} alt='' />
-        <p>Nutrient values:</p>
+        <p>Nutrient Values:</p>
         {food.nutrients.map((n, index) => (
             <li key={index}>{n}</li>)
         )}

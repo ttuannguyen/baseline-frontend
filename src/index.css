@@ -19,7 +19,7 @@
   max-width: 300px; 
 }
 
-.foodCard h3, p {
+.foodCard h3, p, li {
   overflow: hidden;
 }
 
